@@ -1,0 +1,150 @@
+@font-face {
+    font-family: "Excellence In Motion";
+    src: url("../font/excellence.ttf");
+    src: url("../font/EXCELE__.TTF");
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* font: 14px 'Excellence In Motion', Arial, sans-serif; */
+    line-height: 2em;
+    color: #003145;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 300;
+    letter-spacing: .5px;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.btn {
+    float: none;
+    color: #f5f5f5;
+    background-color: #d40504;
+    border: none;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary[disabled]:hover,
+.btn-primary:active:hover,
+.btn-primary:active:focus {
+    background-color: #d40504;
+}
+
+:focus {
+    outline: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.header {
+    background-image: url('../img/af_pattern_bg.png');
+    background-repeat: repeat;
+    background-color: #003145;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: 80px;
+}
+
+.head-text {
+    padding: 10px;
+}
+
+.head-text::after {
+    content: '';
+    border: 2px solid #767676;
+    width: 25px;
+    height: 1px;
+    display: block;
+    margin: 10% 0 0 45%;
+}
+
+.booking-info {
+    padding: 10px;
+}
+
+.no-padding {
+    padding: 0;
+    text-align: left;
+}
+
+.itinerary {
+    text-align: center;
+    font-size: 16px;
+}
+
+.logo {
+    padding: 25px 0;
+    margin: auto;
+}
+
+.content {
+    float: none;
+    margin: 0px auto;
+}
+
+.alert {
+    margin-bottom: 10px
+}
+
+.booking-form {
+    text-align: initial;
+    padding: 0px 15px;
+}
+
+p {
+    color: #767676;
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 480px) {}
+
+
+/* Small Devices, Tablets, IPAD */
+
+@media only screen and (min-width: 768px) {
+    .content {
+        margin: 50px auto;
+        border: 1px solid #767676;
+    }
+    .alert {
+        margin: 0px auto;
+        border: none;
+    }
+    .head-text {
+        padding: 15px;
+    }
+    .booking-form {
+        padding: 0px 20px;
+    }
+    .booking-info {
+        padding: 20px;
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {}

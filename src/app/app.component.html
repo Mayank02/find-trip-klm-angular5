@@ -1,0 +1,77 @@
+<div style="text-align:center">
+  <header class="header">
+    <div class="logo">{{constants.CHECK_IN}}</div>
+  </header>
+  <section class="container">
+    <div class="content col-xs-12 col-sm-6 col-md-4">
+      <h1 class="head-text">{{constants.BOOKING_FORM_HEADING}}</h1>
+      <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="retrieveBooking(bookingForm.value)">
+        <p class="form-heading">{{constants.BOOKING_INFORMATION}}</p>
+        <div class="form-group row">
+          <label for="booking-code" class="col-xs-12 col-form-label">{{constants.BOOKING_CODE}}</label>
+          <div class="col-xs-12">
+            <input class="form-control" type="text" id="booking-code" formControlName="bookingCode">
+          </div>
+          <div class="alert alert-info" *ngIf="!bookingForm.controls['bookingCode'].valid && bookingForm.controls['bookingCode'].touched">{{constants.REQUIRED_MSG}}</div>
+        </div>
+        <div class="form-group row">
+          <label for="family-name" class="col-xs-12 col-form-label">{{constants.FAMILY_NAME}}</label>
+          <div class="col-xs-12">
+            <input class="form-control" type="text" id="family-name" formControlName="familyName">
+          </div>
+          <div class="alert alert-info" *ngIf="!bookingForm.controls['familyName'].valid && bookingForm.controls['familyName'].touched">{{constants.REQUIRED_MSG}}</div>
+        </div>
+        <div class="form-group submit-button row">
+          <div class="col-xs-12">
+            <button type="submit" class="col-xs-12 col-sm-8 col-md-8 btn btn-primary" [disabled]="!bookingForm.valid">{{constants.RETRIEVE_BOOKING}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="booking" class="content booking-info col-xs-12 col-sm-6 col-md-4 row">
+      <h3 class="head-text col-xs-12">{{constants.BOOKING_INFORMATION_HEAD}}</h3>
+      <div class="col-xs-12 no-padding">
+        <div class="col-xs-6"><strong>{{constants.BOOKING_CODE}}</strong></div>
+        <div class="col-xs-6">{{booking.bookingCode}}</div>
+      </div>
+      <div class="col-xs-12 no-padding">
+        <div class="col-xs-6"><strong>{{constants.FIRST_NAME}}</strong></div>
+        <div class="col-xs-6">{{booking.passengers && booking.passengers.firstName}}</div>
+      </div>
+      <div class="col-xs-12 no-padding">
+        <div class="col-xs-6"><strong>{{constants.LAST_NAME}}</strong></div>
+        <div class="col-xs-6">{{booking.passengers && booking.passengers.lastName}}</div>
+      </div>
+      <div *ngIf="booking.itinerary" class="col-xs-12 no-padding">
+        <div class="col-xs-12 itinerary"><h4>{{constants.ITINERARY}}</h4></div>
+        <div *ngFor="let connection of booking.itinerary.connections">
+          <div class="col-xs-12 no-padding">
+            <div class="col-xs-6"><strong>{{constants.DEPART}}</strong></div>
+            <div class="col-xs-6">{{connection.origin && connection.origin.name}}</div>
+          </div>
+          <div class="col-xs-12 no-padding">
+            <div class="col-xs-6"><strong>{{constants.ARRIVE}}</strong></div>
+            <div class="col-xs-6">{{connection.destination && connection.destination.name}}</div>
+          </div>
+          <div *ngFor="let segment of connection.segments" class="col-xs-12 no-padding">
+            <div class="col-xs-12 no-padding">
+              <div class="col-xs-6"><strong>{{constants.FLIGHT_NUMBER}}</strong></div>
+              <div class="col-xs-6">{{segment.marketingFlight && segment.marketingFlight.number}}</div>
+            </div>
+            <div class="col-xs-12 no-padding">
+              <div class="col-xs-6"><strong>{{constants.FLIGHT_NAME}}</strong></div>
+              <div class="col-xs-6">{{segment.marketingFlight && segment.marketingFlight.carrier && segment.marketingFlight.carrier.name}}</div>
+            </div>
+            <div class="col-xs-12 no-padding">
+                <div class="col-xs-6"><strong>{{constants.NO_OF_STOPS}}</strong></div>
+                <div class="col-xs-6">{{segment.marketingFlight && segment.marketingFlight.numberOfStops}}</div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="noDetailsFound" class="content col-xs-10 col-sm-6 col-md-4 row alert alert-info" role="alert">
+      {{constants.NO_DATA_FOUND}}
+    </div>
+  </section>
+</div>
